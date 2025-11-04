@@ -124,13 +124,13 @@ void generateCodes(int root, string codes[]) {
     stack<pair<int, string>> st;
     st.push({root, ""}); // start from the root
     while (!st.empty()){
-        auto current= st.top();
-        st.pop();
+        auto current= st.top(); // get the top element
+        st.pop(); // remove it from the stack
         int node = current.first; //current node number
-        string code = current.second; // current codes
+        string code = current.second; // binary code til current
         if (leftArr[node] == -1 && rightArr[node] == -1) {
             int idx = charArr[node] - 'a'; // ex. a - a = 97-97 = 0. b -a = 98-97 = 1
-            codes[idx] = code;
+            codes[idx] = code; // store the code for this letter
         } else {
             if (rightArr[node] != -1){
                 st.push({rightArr[node], code + "1"});
